@@ -27,7 +27,6 @@ https://github.com/user-attachments/assets/d9fcccc1-de73-49cd-aaa7-df53303dbc6a
 ```
 wget https://github.com/cxnturi0n/convoC2/releases/download/v0.1.0-alpha/convoC2_server_amd64.tar.gz
 tar -xzvf convoC2_server_amd64.tar.gz --one-top-level
-cd convoC2_server_amd64
 ```
 ```
 root@convoC2-server-VPS:~# ./convoC2_server_amd64 -h
@@ -39,7 +38,6 @@ Usage of convoC2 server:
 ```
 wget https://github.com/cxnturi0n/convoC2/releases/download/v0.1.0-alpha/convoC2_agent.tar.gz
 tar -xzvf convoC2_agent.tar.gz --one-top-level
-cd convoC2_agent
 ```
 ```
 C:\Windows>convoC2_agent.exe -h
