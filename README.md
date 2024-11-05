@@ -23,7 +23,7 @@ https://github.com/user-attachments/assets/d9fcccc1-de73-49cd-aaa7-df53303dbc6a
 
 **Note:** In the first case the victim already accepted the chat with the external attacker, but in a real scenario where the attacker starts the chat with the victim for the first time, the victim would need to confirm the chat with the attacker. This is not a problem: because messages are being cached in the log file anyways, the **commands are received and executed even if the victim has not visualized or accepted the chat yet**.
 
-## Demo
+## Download
 Download the latest version of the server:
 ```
 #Amd64
