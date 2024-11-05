@@ -3,6 +3,7 @@
 ## Table of Contents
 - [Introduction](#introduction)
 - [Demo](#demo)
+- [Download](#download)
 - [Usage](#usage)
 - [Requirements](#requirements)
 - [Inspiration](#inspiration)
@@ -22,6 +23,22 @@ https://github.com/user-attachments/assets/d9fcccc1-de73-49cd-aaa7-df53303dbc6a
 
 **Note:** In the first case the victim already accepted the chat with the external attacker, but in a real scenario where the attacker starts the chat with the victim for the first time, the victim would need to confirm the chat with the attacker. This is not a problem: because messages are being cached in the log file anyways, the **commands are received and executed even if the victim has not visualized or accepted the chat yet**.
 
+## Demo
+Download the latest version of the server:
+```
+#Amd64
+wget https://github.com/cxnturi0n/convoC2/releases/download/v0.1.0-alpha/convoC2_server_amd64.tar.gz
+tar -xzvf convoC2_server_amd64.tar.gz --one-top-level
+
+#Arm64
+wget https://github.com/cxnturi0n/convoC2/releases/download/v0.1.0-alpha/convoC2_server_arm64.tar.gz
+tar -xzvf convoC2_server_arm64.tar.gz --one-top-level
+```
+Download the latest version of the agent:
+```
+wget https://github.com/cxnturi0n/convoC2/releases/download/v0.1.0-alpha/convoC2_agent.tar.gz
+tar -xzvf convoC2_agent.tar.gz --one-top-level
+```
 ## Usage
 **Server**
 ```
