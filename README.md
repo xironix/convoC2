@@ -60,7 +60,7 @@ Usage of convoC2 agent:
 
 ## Requirements
 To get it working, you will need to set up a few things:
-- [**Create Teams channel with Workflow Incoming Webhook**](#Create-Teams-channel-with-Workflow-Incoming-Webhook): this is the place where the adaptive cards containing the output will be received. **Note**: **It is important to keep a browser window with this channel opened while using the server**, otherwise the server will not receive messages from the agents.
+- [**Create Teams channel with Workflow Incoming Webhook**](#Create-Teams-channel-with-Workflow-Incoming-Webhook): this is the place where the adaptive cards containing the output will be received. <ins>**It is important to keep a browser window with this channel opened while using the server**</ins>, otherwise the server will not receive messages from the agents.
 
 ![WebhookChannel](https://github.com/user-attachments/assets/ea65daad-9274-4574-835b-107f468a1d6e)
 
