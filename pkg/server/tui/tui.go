@@ -18,6 +18,10 @@ func (m model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 
 	switch msg := msg.(type) {
 	case server.Agent:
+
+		if contains(m.agents, msg) { 
+			return m, nil
+		}
 		m.agents = append(m.agents, msg)
 		m.list.InsertItem(len(m.agents)-1, item(fmt.Sprintf("%s (%s)", msg.Username, msg.AgentId)))
 		return m, WaitForAgent(m.agentChan)
@@ -93,4 +97,13 @@ func (m model) View() string {
 	}
 
 	return ""
+}
+
+func contains(agents []server.Agent, agent server.Agent) bool {
+	for _, item := range agents {
+		if item.AgentId == agent.AgentId {
+			return true
+		}
+	}
+	return false
 }
