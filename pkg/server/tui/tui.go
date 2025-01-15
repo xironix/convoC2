@@ -19,8 +19,8 @@ func (m model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 	switch msg := msg.(type) {
 	case server.Agent:
 
-		if contains(m.agents, msg) { 
-			return m, nil
+		if contains(m.agents, msg) {
+			return m, WaitForAgent(m.agentChan)
 		}
 		m.agents = append(m.agents, msg)
 		m.list.InsertItem(len(m.agents)-1, item(fmt.Sprintf("%s (%s)", msg.Username, msg.AgentId)))
@@ -41,9 +41,12 @@ func (m model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 
 		case "enter":
 			if m.screen == AgentListScreen {
-				selectedAgentIndex := m.list.Index()
-				m.selectedAgent = &m.agents[selectedAgentIndex]
-				m.screen = AgentScreen
+				agentsNum := len(m.list.Items())
+				if agentsNum > 0 {
+					selectedAgentIndex := m.list.Index()
+					m.selectedAgent = &m.agents[selectedAgentIndex]
+					m.screen = AgentScreen
+				}
 			} else if m.screen == AgentScreen {
 				enteredCommand := m.textInput.Value()
 				m.handleRegularCommands(enteredCommand)
