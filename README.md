@@ -24,12 +24,26 @@ https://github.com/user-attachments/assets/d9fcccc1-de73-49cd-aaa7-df53303dbc6a
 
 ## Usage
 **Server**
+For Linux (AMD64):
 ```
 wget https://github.com/cxnturi0n/convoC2/releases/download/v0.1.0-alpha/convoC2_server_amd64.tar.gz
 tar -xzvf convoC2_server_amd64.tar.gz --one-top-level
 ```
+
+For Linux (ARM64):
 ```
-root@convoC2-server-VPS:~# ./convoC2_server_amd64 -h
+wget https://github.com/cxnturi0n/convoC2/releases/download/v0.1.0-alpha/convoC2_server_arm64.tar.gz
+tar -xzvf convoC2_server_arm64.tar.gz --one-top-level
+```
+
+For MacOS (Apple Silicon):
+```
+wget https://github.com/cxnturi0n/convoC2/releases/download/v0.1.0-alpha/convoC2_server_darwin.tar.gz
+tar -xzvf convoC2_server_darwin.tar.gz --one-top-level
+```
+
+```
+root@convoC2-server:~# ./convoC2_server_* -h
 Usage of convoC2 server:
   -t, --msgTimeout  How much to wait for command output (default 30 s)
   -b, --bindIp      Bind IP address (default 0.0.0.0)
