@@ -24,38 +24,87 @@ https://github.com/user-attachments/assets/d9fcccc1-de73-49cd-aaa7-df53303dbc6a
 
 ## Usage
 **Server**
-For Linux (AMD64):
-```
-wget https://github.com/cxnturi0n/convoC2/releases/download/v0.1.0-alpha/convoC2_server_amd64.tar.gz
-tar -xzvf convoC2_server_amd64.tar.gz --one-top-level
+The server is available for multiple platforms and architectures:
+
+Windows:
+```bash
+# For x64 systems
+wget https://github.com/cxnturi0n/convoC2/releases/download/v0.1.0-alpha/convoC2_server_windows_amd64.tar.gz
+tar -xzvf convoC2_server_windows_amd64.tar.gz --one-top-level
+
+# For ARM64 systems
+wget https://github.com/cxnturi0n/convoC2/releases/download/v0.1.0-alpha/convoC2_server_windows_arm64.tar.gz
+tar -xzvf convoC2_server_windows_arm64.tar.gz --one-top-level
 ```
 
-For Linux (ARM64):
-```
-wget https://github.com/cxnturi0n/convoC2/releases/download/v0.1.0-alpha/convoC2_server_arm64.tar.gz
-tar -xzvf convoC2_server_arm64.tar.gz --one-top-level
+Linux:
+```bash
+# For x64 systems
+wget https://github.com/cxnturi0n/convoC2/releases/download/v0.1.0-alpha/convoC2_server_linux_amd64.tar.gz
+tar -xzvf convoC2_server_linux_amd64.tar.gz --one-top-level
+
+# For ARM64 systems
+wget https://github.com/cxnturi0n/convoC2/releases/download/v0.1.0-alpha/convoC2_server_linux_arm64.tar.gz
+tar -xzvf convoC2_server_linux_arm64.tar.gz --one-top-level
 ```
 
-For MacOS (Apple Silicon):
-```
-wget https://github.com/cxnturi0n/convoC2/releases/download/v0.1.0-alpha/convoC2_server_darwin.tar.gz
-tar -xzvf convoC2_server_darwin.tar.gz --one-top-level
+MacOS:
+```bash
+# For Intel Macs
+wget https://github.com/cxnturi0n/convoC2/releases/download/v0.1.0-alpha/convoC2_server_darwin_amd64.tar.gz
+tar -xzvf convoC2_server_darwin_amd64.tar.gz --one-top-level
+
+# For Apple Silicon (M1/M2) Macs
+wget https://github.com/cxnturi0n/convoC2/releases/download/v0.1.0-alpha/convoC2_server_darwin_arm64.tar.gz
+tar -xzvf convoC2_server_darwin_arm64.tar.gz --one-top-level
 ```
 
+Usage for all servers:
 ```
-root@convoC2-server:~# ./convoC2_server_* -h
-Usage of convoC2 server:
+Usage of convoC2_server:
   -t, --msgTimeout  How much to wait for command output (default 30 s)
   -b, --bindIp      Bind IP address (default 0.0.0.0)
 ```
+
 **Agent**
+The agent is available for multiple platforms and architectures:
+
+Windows:
+```bash
+# For x64 systems
+wget https://github.com/cxnturi0n/convoC2/releases/download/v0.1.0-alpha/convoC2_agent_windows_amd64.tar.gz
+tar -xzvf convoC2_agent_windows_amd64.tar.gz --one-top-level
+
+# For ARM64 systems
+wget https://github.com/cxnturi0n/convoC2/releases/download/v0.1.0-alpha/convoC2_agent_windows_arm64.tar.gz
+tar -xzvf convoC2_agent_windows_arm64.tar.gz --one-top-level
 ```
-wget https://github.com/cxnturi0n/convoC2/releases/download/v0.1.0-alpha/convoC2_agent.tar.gz
-tar -xzvf convoC2_agent.tar.gz --one-top-level
+
+Linux:
+```bash
+# For x64 systems
+wget https://github.com/cxnturi0n/convoC2/releases/download/v0.1.0-alpha/convoC2_agent_linux_amd64.tar.gz
+tar -xzvf convoC2_agent_linux_amd64.tar.gz --one-top-level
+
+# For ARM64 systems
+wget https://github.com/cxnturi0n/convoC2/releases/download/v0.1.0-alpha/convoC2_agent_linux_arm64.tar.gz
+tar -xzvf convoC2_agent_linux_arm64.tar.gz --one-top-level
 ```
+
+MacOS:
+```bash
+# For Intel Macs
+wget https://github.com/cxnturi0n/convoC2/releases/download/v0.1.0-alpha/convoC2_agent_darwin_amd64.tar.gz
+tar -xzvf convoC2_agent_darwin_amd64.tar.gz --one-top-level
+
+# For Apple Silicon (M1/M2) Macs
+wget https://github.com/cxnturi0n/convoC2/releases/download/v0.1.0-alpha/convoC2_agent_darwin_arm64.tar.gz
+tar -xzvf convoC2_agent_darwin_arm64.tar.gz --one-top-level
 ```
-C:\Windows>convoC2_agent.exe -h
-Usage of convoC2 agent:
+
+Usage for all agents:
+```
+Usage of convoC2_agent:
   -v, --verbose   Verbose logging (default false)
   -s, --server    C2 server URL (i.e. http://10.11.12.13/)
   -t, --timeout   Teams log file polling timeout [s] (default 1)
